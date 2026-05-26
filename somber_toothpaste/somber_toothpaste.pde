@@ -1,4 +1,5 @@
 //snaaake
+//audiocut.io
 
 int mode;
 final int intro = 1;
@@ -7,6 +8,8 @@ final int pause = 3;
 final int gameover = 4;
 
 //entity variables
+float vx, vy;
+float x1, y2, d;
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
 float ballx, bally, balld;
 
@@ -17,8 +20,12 @@ boolean wkey, skey, upkey, downkey;
 
 
 void setup() {
+  background(0);
+  
   size(900, 900);
   mode = game;
+  
+  x1 = height/2;
   
   leftx = 0;
   lefty = height/2;
@@ -35,6 +42,9 @@ void setup() {
   
   //initalize keyboard vars
   wkey = skey = upkey = downkey = false;
+  
+  vx = random(-5, 5);
+  vy = random(-5, 5);
 }
 
 void draw() {
