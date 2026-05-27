@@ -8,15 +8,16 @@ final int pause = 3;
 final int gameover = 4;
 
 //entity variables
-float vx, vy;
+float vx, vy, dor;
 float x1, y2, d;
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
 float ballx, bally, balld;
 
+int rightscore, leftscore, timer;
+
 //keyboard variables
 
 boolean wkey, skey, upkey, downkey;
-
 
 
 void setup() {
@@ -43,8 +44,13 @@ void setup() {
   //initalize keyboard vars
   wkey = skey = upkey = downkey = false;
   
+  //initalize score
+  rightscore = 0;
+  leftscore = 0;
+  timer = 100;
+  
   vx = random(-5, 5);
-  vy = random(-5, 5);
+  vy = random(-2, 2);
 }
 
 void draw() {
