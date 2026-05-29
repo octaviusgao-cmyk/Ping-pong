@@ -1,6 +1,7 @@
 void game() {
   //paddles
   background(0);
+  stroke(blue);
   circle(leftx, lefty, leftd);
   circle(rightx, righty, rightd);
 
@@ -8,9 +9,7 @@ void game() {
     ballx = ballx + vx;
     bally = bally + vy;
   }
-  if (timer < 0) {
 
-  }
   //scoreboard
   textSize(50);
   fill(21, 60, 47);
@@ -46,11 +45,23 @@ void game() {
   }
 
 
+
   //move paddles
   if (wkey == true) lefty = lefty - 5;
   if (skey == true) lefty = lefty + 5;
-  if (upkey == true) righty = righty - 5;
-  if (downkey == true) righty = righty + 5;
+
+  if (AI == false) {
+    if (upkey == true) righty = righty - 5;
+    if (downkey == true) righty = righty + 5;
+  } else {
+    if (ballx > width/2) {
+      if (bally > righty) {
+        righty = righty + 10;
+      } else if (bally < righty) {
+        righty = righty - 10;
+      }
+    }
+  }
   //ball
   circle(ballx, bally, balld);
 
@@ -72,9 +83,20 @@ void game() {
   }
   if (righty < 200) {
     righty = 200;
+    }
+  }
+
+
+void tactile(int x, int y, int w, int h) {
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    stroke(255);
+  } else {
+    stroke(red);
+    strokeWeight(3);
   }
 }
 
 
 void gameClicks() {
+  mode = pause;
 }

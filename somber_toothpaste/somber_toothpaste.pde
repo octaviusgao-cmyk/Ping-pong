@@ -13,7 +13,16 @@ float x1, y2, d;
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
 float ballx, bally, balld;
 
+color white = #FEFEFE;
+color darkBlue = #112146;
+color red = #944430;
+color pink = #E48873;
+color blue = #2253BB;
+
+PImage phoenix;
+
 int rightscore, leftscore, timer;
+boolean AI;
 
 //keyboard variables
 
@@ -23,8 +32,13 @@ boolean wkey, skey, upkey, downkey;
 void setup() {
   background(0);
   
+  textAlign(CENTER);
+  imageMode(CENTER);
+  
+  phoenix = loadImage("phoenixwright.png");
+  
   size(900, 900);
-  mode = game;
+  mode = intro;
   
   x1 = height/2;
   
