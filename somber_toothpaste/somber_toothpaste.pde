@@ -18,8 +18,14 @@ color darkBlue = #112146;
 color red = #944430;
 color pink = #E48873;
 color blue = #2253BB;
+color court = #D7C2AD;
 
 PImage phoenix;
+PImage edgeworth;
+PImage right;
+PImage left;
+PImage rightlose;
+PImage leftlose;
 
 int rightscore, leftscore, timer;
 boolean AI;
@@ -36,6 +42,11 @@ void setup() {
   imageMode(CENTER);
   
   phoenix = loadImage("phoenixwright.png");
+  edgeworth = loadImage("PHOTON_SHOT-removebg-preview.png");
+  right = loadImage("edgeworth.png");
+  left = loadImage("leftwin.png");
+  rightlose = loadImage("rightlose1.png");
+  leftlose = loadImage("rightlose-removebg-preview.png");
   
   size(900, 900);
   mode = intro;

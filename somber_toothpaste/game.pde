@@ -1,9 +1,12 @@
 void game() {
   //paddles
-  background(0);
+  background(court);
   stroke(blue);
+  fill(white);
   circle(leftx, lefty, leftd);
   circle(rightx, righty, rightd);
+  image(phoenix, leftx + 70, lefty, 150, 150);
+  image(edgeworth, rightx - 70, righty, 150, 150);
 
   if (timer < 0) {
     ballx = ballx + vx;
@@ -47,12 +50,12 @@ void game() {
 
 
   //move paddles
-  if (wkey == true) lefty = lefty - 5;
-  if (skey == true) lefty = lefty + 5;
+  if (wkey == true) lefty = lefty - 9;
+  if (skey == true) lefty = lefty + 9;
 
   if (AI == false) {
-    if (upkey == true) righty = righty - 5;
-    if (downkey == true) righty = righty + 5;
+    if (upkey == true) righty = righty - 9;
+    if (downkey == true) righty = righty + 9;
   } else {
     if (ballx > width/2) {
       if (bally > righty) {
@@ -70,6 +73,11 @@ void game() {
     vy = vy * -1;
   }
 
+  if (leftscore == 5) {
+    mode = gameover;
+  } else if (rightscore == 5) {
+    mode = gameover;
+  }
 
   //paddle limit
   if (lefty > 700) {
@@ -99,4 +107,5 @@ void tactile(int x, int y, int w, int h) {
 
 void gameClicks() {
   mode = pause;
+  
 }
