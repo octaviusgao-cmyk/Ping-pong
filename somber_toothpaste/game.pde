@@ -15,25 +15,34 @@ void game() {
 
   //scoreboard
   textSize(50);
-  fill(21, 60, 47);
+  fill(red);
+  text("Phoenix Wright", width/4, 40);
   text(leftscore, width/4, 100);
-  fill(28, 40, 50);
+  fill(red);
+  text("Miles Edgeworth", 3*width/4, 40);
   text(rightscore, 3*width/4, 100);
   //text(timer, 3*width/4, 800);
   timer = timer - 1;
 
   if (dist(leftx, lefty, ballx, bally) <= leftd/2 + balld/2) {
-    vx = (ballx - leftx)/10;
-    vy = (bally - lefty)/10;
+    objection.rewind();
+    objection.play();
+    vx = (ballx - leftx)/a;
+    vy = (bally - lefty)/a;
+    if (a> 5) a= a/1.05;
   }
 
   if (dist(rightx, righty, ballx, bally) <= rightd/2 + balld/2) {
-    vx = (ballx - rightx)/10;
-    vy = (bally - righty)/10;
+    miles.rewind();
+    miles.play();
+    vx = (ballx - rightx)/a;
+    vy = (bally - righty)/a;
+    if (a> 5) a= a/1.05;
   }
 
   //scoring
   if (ballx < 0) {
+    a = 10;
     rightscore = rightscore + 1;
     ballx = width/2;
     bally = height/2;
@@ -41,6 +50,7 @@ void game() {
   }
 
   if (ballx > 900) {
+    a= 10;
     leftscore++;
     ballx = width/2;
     bally = height/2;
@@ -50,12 +60,12 @@ void game() {
 
 
   //move paddles
-  if (wkey == true) lefty = lefty - 9;
-  if (skey == true) lefty = lefty + 9;
+  if (wkey == true) lefty = lefty - 15;
+  if (skey == true) lefty = lefty + 15;
 
   if (AI == false) {
-    if (upkey == true) righty = righty - 9;
-    if (downkey == true) righty = righty + 9;
+    if (upkey == true) righty = righty - 15;
+    if (downkey == true) righty = righty + 15;
   } else {
     if (ballx > width/2) {
       if (bally > righty) {
@@ -66,7 +76,11 @@ void game() {
     }
   }
   //ball
+  fill(white);
   circle(ballx, bally, balld);
+  textSize(20);
+  fill(red);
+  text("casefiles", ballx, bally);
 
 
   if (bally < balld/2 || bally > width-balld/2) {
@@ -91,8 +105,8 @@ void game() {
   }
   if (righty < 200) {
     righty = 200;
-    }
   }
+}
 
 
 void tactile(int x, int y, int w, int h) {
@@ -107,5 +121,4 @@ void tactile(int x, int y, int w, int h) {
 
 void gameClicks() {
   mode = pause;
-  
 }

@@ -1,4 +1,6 @@
 void intro() {
+  theme.setGain(-20);
+  theme.play();
   background(darkBlue);
   
   fill(pink);

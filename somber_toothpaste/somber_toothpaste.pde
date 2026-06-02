@@ -1,3 +1,10 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 //snaaake
 //audiocut.io
 
@@ -12,6 +19,7 @@ float vx, vy, dor;
 float x1, y2, d;
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
 float ballx, bally, balld;
+float a;
 
 color white = #FEFEFE;
 color darkBlue = #112146;
@@ -33,6 +41,9 @@ boolean AI;
 //keyboard variables
 
 boolean wkey, skey, upkey, downkey;
+// sound
+Minim minim;
+AudioPlayer objection, theme, miles, mileswin, phoenixwin;
 
 
 void setup() {
@@ -52,6 +63,7 @@ void setup() {
   mode = intro;
   
   x1 = height/2;
+  a = 10;
   
   leftx = 0;
   lefty = height/2;
@@ -69,13 +81,21 @@ void setup() {
   //initalize keyboard vars
   wkey = skey = upkey = downkey = false;
   
+  //minim 
+  minim = new Minim(this);
+  theme = minim.loadFile("objection!!!.mp3");
+  miles = minim.loadFile("edgeworth.mp3");
+  objection = minim.loadFile("phoenix.mp3");
+  mileswin = minim.loadFile("take-that.mp3");
+  phoenixwin = minim.loadFile("phoenix-wright-take-that.mp3");
+  
   //initalize score
   rightscore = 0;
   leftscore = 0;
   timer = 100;
   
   vx = random(-5, 5);
-  vy = random(-2, 2);
+  vy = random(-1, 1);
 }
 
 void draw() {

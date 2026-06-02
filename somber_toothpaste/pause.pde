@@ -1,4 +1,5 @@
 void pause() {
+  theme.pause();
   text("PAUSE", 450, 450);
   fill(red);
   tactile(350, 500, 200, 100);
